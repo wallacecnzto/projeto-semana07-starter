@@ -1,170 +1,190 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
-    margin: 0;
-    background-color: $backgroundColor;
-    font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  background-color: $backgroundColor;
+  font-family: 'DM Sans', sans-serif;
 }
 
 button {
-    border: none;
-    background-color: transparent;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 .navbar {
-    padding: 18px 16px;
-    border-bottom: 1px solid #26292D;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    background: $backgroundColor;
-    &-links {
-        display: none;
-    }
+  padding: 18px 16px;
+  border-bottom: 1px solid $borderColor;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $backgroundColor;
 
-    @media (min-width: 992px) {
-        &-links {
-            display: flex;
-        }
-        .burger-button {
-            display: none;
-        }
-        &-link {
-            color: white;
-            margin-right: 23px;
-            font-weight: 500;
-            text-decoration: none;
-            padding: 8px 0;
-            position: relative;
-            &:hover {
-                &:before {
-                    content: '';
-                    position: absolute;
-                    width: 100%;
-                    bottom: 0;
-                    left: 0;
-                    background-color: $primaryColor;
-                    height: 3px;
-                }
-            }
-        }
+  &-links {
+    display: none;
+  }
+
+  @media (min-width: 992px) {
+    .navbar-burger {
+      display: none;
     }
+    .navbar-links {
+      display: flex;
+      gap: 23px;
+      &-link {
+        color: white;
+        font-size: 16px;
+        line-height: 16px;
+        font-weight: 500;
+        padding-bottom: 5px;
+        position: relative;
+        &:hover {
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: $primaryColor;
+            height: 3px;
+          }
+        }
+      }
+    }
+  }
 }
-
 
 .footer {
-    padding: 0 16px;
-    &__border {
-        border-top: 1px solid $grayBorder;
-        border-bottom: 1px solid $grayBorder;
-    }
-    &-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 32px 0;
-        @media (min-width: 992px) {
-            flex-direction: row;
-            justify-content: space-between;
-        }
-    }
+  flex-direction: column;
+  align-items: center;
+  margin-right: 16px;
+  margin-left: 16px;
 
-    &-column {
-        text-align: center;
-        @media (min-width: 992px) {
-            text-align: left;
-        }
-        &-name {
-            color: $acento;
-            font-size: 16px;
-            line-height: 20px;
-            font-weight: 500;
-            letter-spacing: 0.15px;
-            @media (min-width: 992px) {
-                margin-bottom: 24px;
-            }
-        }
+  &__border {
+    border-top: 1px solid $borderColor;
+  }
 
-        &-link {
-            font-size: 14px;
-            color: white;
-            line-height: 20px;
-            letter-spacing: 0.25px;
-            text-decoration: none;
-        }
-    }
-
-    &-copy {
-        &-text {
-            color: white;
-            text-align: center;
-            font-size: 12px;
-            line-height: 16px;
-            letter-spacing: 0.4px;
-            @media (min-width: 992px) {
-                text-align: left;
-            }
-        }
-    }
-}
-
-
-// classes genéricas
-
-.button {
-    border-radius: 5px;
-    height: 48px;
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
-    display: inline-flex;
+  &-content {
+    flex-direction: column;
     align-items: center;
-    cursor: pointer;
+    text-align: center;
 
-    &__solid {
-        background-color: $primaryColor;
-        padding-left: 15.5px;
-        padding-right: 15.5px;
+    @media (min-width: 992px) {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 64px 0;
+      align-items: flex-start;
+    }
+  }
+  &-logo {
+    padding-top: 31px;
+    @media (min-width: 992px) {
+      padding-top: 0px;
+    }
+  }
+
+  &-column {
+    flex-direction: column;
+    padding-top: 32px;
+    @media (min-width: 992px) {
+      text-align: left;
+      padding-top: 0;
     }
 
-    &__outlined {
-        border: 1px solid white;
-        padding-left: 20px;
-        padding-right: 20px;
-        justify-content: center;
+    &-name {
+      color: $nameColor;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0.15px;
+      padding-bottom: 24px;
+      @media (min-width: 992px) {
+        margin-top: 0;
+      }
+    }
+
+    &-link {
+      text-align: center;
+      color: $linkColor;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0.25;
+    }
+  }
+
+  &-copy {
+    border-top: 1px solid $borderColor;
+    width: 100%;
+    margin-top: 48px;
+    @media (min-width: 992px) {
+      margin-top: 0;
     }
 
     &-text {
-        &__mr-left {
-            margin-left: 8px;
-        }
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.4px;
+      color: white;
+      padding-top: 16px;
+      text-align: center;
+      padding-bottom: 20px;
+      margin: 0;
 
-        &__mr-right {
-            margin-right: 8px;
-        }
+      @media (min-width: 992px) {
+        text-align: left;
+        padding-bottom: 32px;
+      }
     }
+  }
+}
+
+//classes genéricas
+
+.button {
+  border-radius: 5px;
+  height: 48px;
+  color: #fafafa;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+
+  &__solid {
+    background-color: $primaryColor;
+    padding-left: 15.5px;
+    padding-right: 15.5px;
+  }
+
+  &__outlined {
+    border: 1px solid #ffff;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  &-text {
+    &__mr-left {
+      margin-left: 8px;
+    }
+
+    &__mr-right {
+      margin-right: 8px;
+    }
+  }
 }
 
 .container {
-    max-width: 1156px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 1156px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
-.align-center {
-    align-items: center;
-}
-
-.justify-between {
-    justify-content: space-between;
+.space-between {
+  justify-content: space-between;
 }
